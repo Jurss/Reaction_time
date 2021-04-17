@@ -1,0 +1,114 @@
+@font-face {
+    font-family: "kanit-medium-italic";
+    src: local(kanit), url(fonts/kanit/Kanit-MediumItalic.ttf);
+}
+
+@font-face {
+    font-family: "PmingLiU";
+    src: local(PmingLiU), url(fonts/Pming/PMINGLIU.ttf);
+}
+
+body {
+    margin: 0;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.barContent {
+    max-width: 89%;
+    margin: 0 auto;
+    margin-top: 40px;
+    height: 2px;
+    background: #A2A2A2;
+    border-radius: 12px;
+}
+
+#title {
+    width: 99vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: kanit-medium-italic;
+}
+
+#count {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#count p {
+    font-size: 8em;
+    font-weight: 900;
+    color: rgb(243, 30, 30);
+}
+
+#count3,
+#count2,
+#count1,
+#count_Go {
+    display: none;
+}
+
+#btn-start {
+    height: 50px;
+    width: 150px;
+    margin: 0 auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    background: rgb(11, 62, 230);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#btn-start p {
+    color: darkgray;
+    font-family: PmingLiU;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+#btn-start:active {
+    opacity: 0.8;
+    width: 145px;
+    height: 45px;
+    margin-bottom: 30px;
+}
+
+#controller {
+    height: 65vh;
+    width: 65vw;
+    border: 1px solid black;
+    border-radius: 12px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 4, 1fr;
+    grid-template-rows: 4, 1fr;
+    grid-template-areas: "case1 case2 case3 case4" "case5 case6 case7 case8" "case9 case10 case11 case12" "case13 case14 case15 case16";
+}
+
+.case {
+    border: 1px solid black;
+}
+
+.case1 {
+    border-top-left-radius: 12px;
+}
+
+.case4 {
+    border-top-right-radius: 12px;
+}
+
+.case13 {
+    border-bottom-left-radius: 12px;
+}
+
+.case16 {
+    border-bottom-right-radius: 12px;
+}
