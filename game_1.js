@@ -25,6 +25,7 @@ let case16 = document.getElementsByClassName('case16');
 
 let delay_1S = 1000;
 let randomCase = 0;
+let randomTrapCase = 0;
 let goGame = false;
 
 //count before lauch the game
@@ -54,11 +55,17 @@ function getRandomNb() {
     return Math.floor(Math.random() * 16);
 };
 
+function trapCase() {
+    return Math.floor(Math.random() * 6);
+}
+
+
 
 function selectCase() {
-
-
+    randomTrapCase = trapCase();
+    console.log(randomTrapCase);
     randomCase = getRandomNb();
+
     if (randomCase === 0) {
         case1[0].style.background = "green";
         case1[0].style.cursor = "pointer";
