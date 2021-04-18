@@ -64,7 +64,7 @@ function getRandomNb() {
 };
 
 function selectCase() {
-    if (i <= 5) {
+    if (i < 15) {
         setTimeout(function() {
             randomCase = getRandomNb();
 
