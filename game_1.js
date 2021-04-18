@@ -5,6 +5,10 @@ let count2 = document.getElementById('count2');
 let count3 = document.getElementById('count3');
 let count_Go = document.getElementById('count_Go');
 
+let modal = document.getElementById('myModal');
+let span = document.getElementById('close');
+let scoreInModal = document.getElementById('score');
+
 let case1 = document.getElementsByClassName('case1');
 let case2 = document.getElementsByClassName('case2');
 let case3 = document.getElementsByClassName('case3');
@@ -25,10 +29,12 @@ let case16 = document.getElementsByClassName('case16');
 let delay_1S = 1000;
 let delay_05s = 500;
 let randomCase = 0;
-let startDate; //x
-let clickTime; //x Calculation of the reaction time
-let diff; //x
-let sotckTime = new Array();
+let startDate; //xx
+let clickTime; //xx Calculation of the reaction time
+let diff; //xx
+let sotckTime = new Array(); //Stock time of reaction
+let i = 0; //count iteration of selectCase function
+let average = 0; //average of stockTime
 
 //count before lauch the game
 start.addEventListener('click', () => {
@@ -58,111 +64,129 @@ function getRandomNb() {
 };
 
 function selectCase() {
-    setTimeout(function() {
-        randomCase = getRandomNb();
+    if (i <= 5) {
+        setTimeout(function() {
+            randomCase = getRandomNb();
 
-        if (randomCase === 0) {
-            case1[0].style.background = "green";
-            case1[0].style.cursor = "pointer";
+            if (randomCase === 0) {
+                case1[0].style.background = "green";
+                case1[0].style.cursor = "pointer";
 
-            startDate = new Date();
-            case1[0].addEventListener('click', next1, { once: true });
-        } else if (randomCase === 1) {
-            case2[0].style.background = "green";
-            case2[0].style.cursor = "pointer";
+                startDate = new Date();
+                case1[0].addEventListener('click', next1, { once: true });
+            } else if (randomCase === 1) {
+                case2[0].style.background = "green";
+                case2[0].style.cursor = "pointer";
 
-            startDate = new Date();
-            case2[0].addEventListener('click', next2, { once: true });
-        } else if (randomCase === 2) {
-            case3[0].style.background = "green";
-            case3[0].style.cursor = "pointer";
+                startDate = new Date();
+                case2[0].addEventListener('click', next2, { once: true });
+            } else if (randomCase === 2) {
+                case3[0].style.background = "green";
+                case3[0].style.cursor = "pointer";
 
-            startDate = new Date();
-            case3[0].addEventListener('click', next3, { once: true });
-        } else if (randomCase === 3) {
-            case4[0].style.background = "green";
-            case4[0].style.cursor = "pointer";
+                startDate = new Date();
+                case3[0].addEventListener('click', next3, { once: true });
+            } else if (randomCase === 3) {
+                case4[0].style.background = "green";
+                case4[0].style.cursor = "pointer";
 
-            startDate = new Date();
-            case4[0].addEventListener('click', next4, { once: true });
-        } else if (randomCase === 4) {
-            case5[0].style.background = "green";
-            case5[0].style.cursor = "pointer";
+                startDate = new Date();
+                case4[0].addEventListener('click', next4, { once: true });
+            } else if (randomCase === 4) {
+                case5[0].style.background = "green";
+                case5[0].style.cursor = "pointer";
 
-            startDate = new Date();
-            case5[0].addEventListener('click', next5, { once: true });
-        } else if (randomCase === 5) {
-            case6[0].style.background = "green";
-            case6[0].style.cursor = "pointer";
+                startDate = new Date();
+                case5[0].addEventListener('click', next5, { once: true });
+            } else if (randomCase === 5) {
+                case6[0].style.background = "green";
+                case6[0].style.cursor = "pointer";
 
-            startDate = new Date();
-            case6[0].addEventListener('click', next6, { once: true });
-        } else if (randomCase === 6) {
-            case7[0].style.background = "green";
-            case7[0].style.cursor = "pointer";
+                startDate = new Date();
+                case6[0].addEventListener('click', next6, { once: true });
+            } else if (randomCase === 6) {
+                case7[0].style.background = "green";
+                case7[0].style.cursor = "pointer";
 
-            startDate = new Date();
-            case7[0].addEventListener('click', next7, { once: true });
-        } else if (randomCase === 7) {
-            case8[0].style.background = "green";
-            case8[0].style.cursor = "pointer";
+                startDate = new Date();
+                case7[0].addEventListener('click', next7, { once: true });
+            } else if (randomCase === 7) {
+                case8[0].style.background = "green";
+                case8[0].style.cursor = "pointer";
 
-            startDate = new Date();
-            case8[0].addEventListener('click', next8, { once: true });
-        } else if (randomCase === 8) {
-            case9[0].style.background = "green";
-            case9[0].style.cursor = "pointer";
+                startDate = new Date();
+                case8[0].addEventListener('click', next8, { once: true });
+            } else if (randomCase === 8) {
+                case9[0].style.background = "green";
+                case9[0].style.cursor = "pointer";
 
-            startDate = new Date();
-            case9[0].addEventListener('click', next9, { once: true });
-        } else if (randomCase === 9) {
-            case10[0].style.background = "green";
-            case10[0].style.cursor = "pointer";
+                startDate = new Date();
+                case9[0].addEventListener('click', next9, { once: true });
+            } else if (randomCase === 9) {
+                case10[0].style.background = "green";
+                case10[0].style.cursor = "pointer";
 
-            startDate = new Date();
-            case10[0].addEventListener('click', next10, { once: true });
-        } else if (randomCase === 10) {
-            case11[0].style.background = "green";
-            case11[0].style.cursor = "pointer";
+                startDate = new Date();
+                case10[0].addEventListener('click', next10, { once: true });
+            } else if (randomCase === 10) {
+                case11[0].style.background = "green";
+                case11[0].style.cursor = "pointer";
 
-            startDate = new Date();
-            case11[0].addEventListener('click', next11, { once: true });
-        } else if (randomCase === 11) {
-            case12[0].style.background = "green";
-            case12[0].style.cursor = "pointer";
+                startDate = new Date();
+                case11[0].addEventListener('click', next11, { once: true });
+            } else if (randomCase === 11) {
+                case12[0].style.background = "green";
+                case12[0].style.cursor = "pointer";
 
-            startDate = new Date();
-            case12[0].addEventListener('click', next12, { once: true });
-        } else if (randomCase === 12) {
-            case13[0].style.background = "green";
-            case13[0].style.cursor = "pointer";
+                startDate = new Date();
+                case12[0].addEventListener('click', next12, { once: true });
+            } else if (randomCase === 12) {
+                case13[0].style.background = "green";
+                case13[0].style.cursor = "pointer";
 
-            startDate = new Date();
-            case13[0].addEventListener('click', next13, { once: true });
-        } else if (randomCase === 13) {
-            case14[0].style.background = "green";
-            case14[0].style.cursor = "pointer";
+                startDate = new Date();
+                case13[0].addEventListener('click', next13, { once: true });
+            } else if (randomCase === 13) {
+                case14[0].style.background = "green";
+                case14[0].style.cursor = "pointer";
 
-            startDate = new Date();
-            case14[0].addEventListener('click', next14, { once: true });
-        } else if (randomCase === 14) {
-            case15[0].style.background = "green";
-            case15[0].style.cursor = "pointer";
+                startDate = new Date();
+                case14[0].addEventListener('click', next14, { once: true });
+            } else if (randomCase === 14) {
+                case15[0].style.background = "green";
+                case15[0].style.cursor = "pointer";
 
-            startDate = new Date();
-            case15[0].addEventListener('click', next15, { once: true });
-        } else if (randomCase === 15) {
-            case16[0].style.background = "green";
-            case16[0].style.cursor = "pointer";
+                startDate = new Date();
+                case15[0].addEventListener('click', next15, { once: true });
+            } else if (randomCase === 15) {
+                case16[0].style.background = "green";
+                case16[0].style.cursor = "pointer";
 
-            startDate = new Date();
-            case16[0].addEventListener('click', next16, { once: true });
-        }
-    }, delay_05s);
+                startDate = new Date();
+                case16[0].addEventListener('click', next16, { once: true });
+            }
+        }, delay_05s);
+        i++;
+    } else {
+        let reducer = (accu, currentValue) => accu + currentValue;
+        average = sotckTime.reduce(reducer);
+        average /= i;
+        i = 0;
+        let inString = average.toString();
+        let length = 4;
+        let cupString = inString.substring(0, length)
+
+        scoreInModal.textContent = "Votre temps de reaction moyen est de: " + cupString + " secondes";
+        modal.style.display = "block";
+
+        sotckTime.splice(0, sotckTime.length);
+    }
 };
+
 
 function next1() {
     case1[0].style.background = "#FFFFFF";
+    case1[0].style.cursor = "default";
     clickTime = new Date();
     diff = clickTime.getTime() - startDate.getTime();
     diff = diff / 1000;
@@ -172,6 +196,7 @@ function next1() {
 
 function next2() {
     case2[0].style.background = "#FFFFFF";
+    case2[0].style.cursor = "default";
     clickTime = new Date();
     diff = clickTime.getTime() - startDate.getTime();
     diff = diff / 1000;
@@ -181,6 +206,7 @@ function next2() {
 
 function next3() {
     case3[0].style.background = "#FFFFFF";
+    case3[0].style.cursor = "default";
     clickTime = new Date();
     diff = clickTime.getTime() - startDate.getTime();
     diff = diff / 1000;
@@ -190,6 +216,7 @@ function next3() {
 
 function next4() {
     case4[0].style.background = "#FFFFFF";
+    case4[0].style.cursor = "default";
     clickTime = new Date();
     diff = clickTime.getTime() - startDate.getTime();
     diff = diff / 1000;
@@ -199,6 +226,7 @@ function next4() {
 
 function next5() {
     case5[0].style.background = "#FFFFFF";
+    case5[0].style.cursor = "default";
     clickTime = new Date();
     diff = clickTime.getTime() - startDate.getTime();
     diff = diff / 1000;
@@ -208,6 +236,7 @@ function next5() {
 
 function next6() {
     case6[0].style.background = "#FFFFFF";
+    case6[0].style.cursor = "default";
     clickTime = new Date();
     diff = clickTime.getTime() - startDate.getTime();
     diff = diff / 1000;
@@ -217,6 +246,7 @@ function next6() {
 
 function next7() {
     case7[0].style.background = "#FFFFFF";
+    case7[0].style.cursor = "default";
     clickTime = new Date();
     diff = clickTime.getTime() - startDate.getTime();
     diff = diff / 1000;
@@ -226,6 +256,7 @@ function next7() {
 
 function next8() {
     case8[0].style.background = "#FFFFFF";
+    case8[0].style.cursor = "default";
     clickTime = new Date();
     diff = clickTime.getTime() - startDate.getTime();
     diff = diff / 1000;
@@ -235,6 +266,7 @@ function next8() {
 
 function next9() {
     case9[0].style.background = "#FFFFFF";
+    case9[0].style.cursor = "default";
     clickTime = new Date();
     diff = clickTime.getTime() - startDate.getTime();
     diff = diff / 1000;
@@ -244,6 +276,7 @@ function next9() {
 
 function next10() {
     case10[0].style.background = "#FFFFFF";
+    case10[0].style.cursor = "default";
     clickTime = new Date();
     diff = clickTime.getTime() - startDate.getTime();
     diff = diff / 1000;
@@ -253,6 +286,7 @@ function next10() {
 
 function next11() {
     case11[0].style.background = "#FFFFFF";
+    case11[0].style.cursor = "default";
     clickTime = new Date();
     diff = clickTime.getTime() - startDate.getTime();
     diff = diff / 1000;
@@ -262,6 +296,7 @@ function next11() {
 
 function next12() {
     case12[0].style.background = "#FFFFFF";
+    case12[0].style.cursor = "default";
     clickTime = new Date();
     diff = clickTime.getTime() - startDate.getTime();
     diff = diff / 1000;
@@ -271,6 +306,7 @@ function next12() {
 
 function next13() {
     case13[0].style.background = "#FFFFFF";
+    case13[0].style.cursor = "default";
     clickTime = new Date();
     diff = clickTime.getTime() - startDate.getTime();
     diff = diff / 1000;
@@ -280,6 +316,7 @@ function next13() {
 
 function next14() {
     case14[0].style.background = "#FFFFFF";
+    case14[0].style.cursor = "default";
     clickTime = new Date();
     diff = clickTime.getTime() - startDate.getTime();
     diff = diff / 1000;
@@ -289,6 +326,7 @@ function next14() {
 
 function next15() {
     case15[0].style.background = "#FFFFFF";
+    case15[0].style.cursor = "default";
     clickTime = new Date();
     diff = clickTime.getTime() - startDate.getTime();
     diff = diff / 1000;
@@ -298,6 +336,7 @@ function next15() {
 
 function next16() {
     case16[0].style.background = "#FFFFFF";
+    case16[0].style.cursor = "default";
     clickTime = new Date();
     diff = clickTime.getTime() - startDate.getTime();
     diff = diff / 1000;
@@ -305,7 +344,17 @@ function next16() {
     selectCase();
 }
 
-function averageOfStockTime(tab) {
-    let reducer = (accu, currentValue) => accu + currentValue;
-    tab.reduce(reducer);
+span.onclick = function() {
+    modal.style.display = "none";
+};
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+//trunc average stocktime
+function truncateString(str, num) {
+    return str;
 }
