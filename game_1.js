@@ -8,6 +8,7 @@ let count_Go = document.getElementById('count_Go');
 let modal = document.getElementById('myModal');
 let span = document.getElementById('close');
 let scoreInModal = document.getElementById('score');
+let newGame = document.getElementById('newGame');
 
 let case1 = document.getElementsByClassName('case1');
 let case2 = document.getElementsByClassName('case2');
@@ -55,9 +56,27 @@ start.addEventListener('click', () => {
             }, delay_1S);
         }, delay_1S);
     }, delay_1S);
-
-
 });
+newGame.addEventListener('click', () => {
+    modal.style.display = "none";
+    count3.style.display = "block";
+    setTimeout(function() {
+        count3.style.display = "none";
+        count2.style.display = "block";
+        setTimeout(function() {
+            count2.style.display = "none";
+            count1.style.display = "block";
+            setTimeout(function() {
+                count1.style.display = "none";
+                count_Go.style.display = "block";
+                setTimeout(function() {
+                    count_Go.style.display = "none";
+                    selectCase();
+                }, delay_1S);
+            }, delay_1S);
+        }, delay_1S);
+    }, delay_1S);
+})
 
 function getRandomNb() {
     return Math.floor(Math.random() * 16);
@@ -352,9 +371,4 @@ window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
-}
-
-//trunc average stocktime
-function truncateString(str, num) {
-    return str;
 }
